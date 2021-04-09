@@ -1,0 +1,61 @@
+<div class="popup image-picker">
+	<div class="window">
+		<div class="header">
+			<h3>
+				<ng-container *ngIf="mode === 'publish'">{{ 'exportPopup.publishWebsite' | translate }}</ng-container>
+				<ng-container *ngIf="mode === 'data'">{{ 'exportPopup.exportData' | translate }}</ng-container>
+				<ng-container *ngIf="mode === 'template'">{{ 'exportPopup.exportTemplate' | translate }}</ng-container>
+			</h3>
+			<button class="close" (click)="close()">
+				<i class="fas fa-times fa-lg"></i>
+			</button>
+		</div>
+		<div class="body">
+			<div class="text">
+				<p>{{ 'exportPopup.considerDonation' | translate }}</p>
+
+				<h4>{{ 'exportPopup.authorOfEditor' | translate }}</h4>
+
+				<div class="dl">
+					<div class="label">{{ 'exportPopup.author' | translate }}:</div>
+					<div class="value">Bartlomiej Tadych</div>
+				</div>
+
+				<div class="dl">
+					<div class="label">{{ 'exportPopup.donation' | translate }}:</div>
+					<div class="value">
+						<a href="{{projectDonateUrl}}" class="big" target="_blank">
+							<i class="fas fa-dollar-sign mr"></i> {{ 'exportPopup.donate' | translate }}
+						</a>
+					</div>
+				</div>
+
+				<ng-container *ngIf="templateMeta.donationUrl">
+					<h4>{{ 'exportPopup.authorOfTemplate' | translate }} {{templateMeta.name}}</h4>
+
+					<div class="dl">
+						<div class="label">{{ 'exportPopup.author' | translate }}:</div>
+						<div class="value">{{templateMeta.author}}</div>
+					</div>
+
+					<div class="dl">
+						<div class="label">{{ 'exportPopup.donation' | translate }}:</div>
+						<div class="value">
+							<a href="{{templateMeta.donationUrl}}" class="big" target="_blank">
+								<i class="fas fa-dollar-sign mr"></i> {{ 'exportPopup.donate' | translate }}
+							</a>
+						</div>
+					</div>
+				</ng-container>
+			</div>
+		</div>
+		<div class="footer">
+			<button (click)="save()" [disabled]="processing">
+				<i class="fas fa-save fa-sm fa-fw mr"></i>
+				<ng-container *ngIf="mode === 'publish'">{{ 'exportPopup.saveWebsiteAsZip' | translate }}</ng-container>
+				<ng-container *ngIf="mode === 'data'">{{ 'exportPopup.saveDataAsT3data' | translate }}</ng-container>
+				<ng-container *ngIf="mode === 'template'">{{ 'exportPopup.saveTemplateAsT3data' | translate }}</ng-container>
+			</button>
+		</div>
+	</div>
+</div>

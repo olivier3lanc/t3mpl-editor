@@ -1,0 +1,48 @@
+<section class="section">
+	<div class="tabs">
+		<ul>
+			<li class="selected">
+				{{ 'configuration.routing' | translate }}
+			</li>
+		</ul>
+	</div>
+	<div class="body">
+
+		<div class="property">
+			<div class="label">
+				<i class="fas fa-folder fa-fw fa-lg"></i>
+				<span class="name">
+					{{ 'configuration.pathStrategy' | translate }} *
+					<span class="description">{{ 'configuration.pathStrategyExplain' | translate }}</span>
+				</span>
+			</div>
+			<div class="value">
+				<span class="radio-list">
+					<ul>
+						<li *ngFor="let pps of pagePathStrategies">
+							<label>
+								<input name="page-path-strategy" type="radio" [checked]="pps.isChecked" (change)="onPagePathStrategyChanged(pps.strategy)" />
+								{{pps.label}}
+							</label>
+							<span class="description">{{pps.example}}</span>
+						</li>
+					</ul>
+				</span>
+			</div>
+		</div>
+
+		<div class="property">
+			<div class="label">
+				<i class="fas fa-link fa-fw fa-lg"></i>
+				<span class="name">
+					{{ 'configuration.baseUrl' | translate }}
+					<span class="description">{{ 'configuration.baseUrlExplain' | translate }}</span>
+				</span>
+			</div>
+			<div class="value">
+				<input type="text" [value]="configuration.baseUrl" (change)="onBaseUrlChanged($event.target.value)" autocomplete="off" />
+			</div>
+		</div>
+
+	</div>
+</section>

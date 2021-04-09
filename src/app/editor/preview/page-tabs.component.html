@@ -1,0 +1,24 @@
+<div class="page-tabs">
+	<div class="tabs">
+		<ul>
+			<li
+				*ngFor="let vfp of virtualFilePaths"
+				[class.selected]="vfp === currentVirtualFilePath"
+				(click)="openPage(vfp)">
+				<i class="fas fa-code mr"></i>
+				{{vfp}}
+			</li>
+		</ul>
+	</div>
+	<div class="modes">
+		<span class="mode" [class.selected]="previewMode === 'desktop'" (click)="changeMode('desktop')" title="{{ 'pageTabs.desktopMode' | translate }}">
+			<i class="fas fa-desktop fa-lg fa-fw"></i>
+		</span>
+		<span class="mode desktop-only" [class.selected]="previewMode === 'mobile'" (click)="changeMode('mobile')" title="{{ 'pageTabs.mobileMode' | translate }}">
+			<i class="fas fa-mobile-alt fa-lg fa-fw"></i>
+		</span>
+		<span class="mode" [class.selected]="previewMode === 'data'" (click)="changeMode('data')" title="{{ 'pageTabs.dataMode' | translate }}">
+			<i class="fas fa-database fa-lg fa-fw"></i>
+		</span>
+	</div>
+</div>
